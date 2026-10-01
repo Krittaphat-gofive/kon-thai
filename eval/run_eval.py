@@ -202,6 +202,9 @@ def cmd_report(args):
     run_dir = RUNS / args.name
     items = parse_prompts(args.prompts)
     arms = [a for a in ARMS if (run_dir / a).is_dir()]
+    if not any((run_dir / a / f"{it['id']}.md").exists() for a in arms for it in items):
+        sys.exit(f"ไม่เจอคำตอบใน {run_dir} ที่ตรงกับคำถามใน {args.prompts} "
+                 "ถ้าตอนรันใช้ชุดคำถามอื่น ให้ใส่ --prompts เป็นไฟล์เดียวกัน")
     rows, totals, extra = [], {}, {}
     for arm in arms:
         chars = scored = 0
@@ -296,6 +299,7 @@ def cmd_reveal(args):
 
 def main():
     sys.stdout.reconfigure(encoding="utf-8")
+    sys.stderr.reconfigure(encoding="utf-8")
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd", required=True)
 
