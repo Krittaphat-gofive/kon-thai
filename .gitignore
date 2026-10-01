@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+
+# สำเนา style กับ skill ที่ตัวรันทดสอบสร้างไว้ใน working dir ของแต่ละ arm
+eval/runs/**/_work/
+
+# ข่าว Blognone ที่ดึงมาวัดผล ดึงใหม่ได้ด้วย python eval/calibrate.py --refresh
+eval/corpus/blognone_sample.jsonl

@@ -1,0 +1,11 @@
+{
+  "name": "kon-thai",
+  "displayName": "kon-thai",
+  "version": "2.0.0",
+  "description": "ให้ Claude Code ตอบภาษาไทยแบบ senior dev คนไทยแทนภาษาแปล มี output style สองแบบ (ผม/ครับ และ ดิฉัน/ค่ะ) skill เกลาภาษา และ hook เตือนสั้น ๆ",
+  "author": { "name": "Krittaphat", "url": "https://github.com/Krittaphat-gofive" },
+  "homepage": "https://github.com/Krittaphat-gofive/kon-thai",
+  "repository": "https://github.com/Krittaphat-gofive/kon-thai",
+  "license": "MIT",
+  "keywords": ["thai", "output-style", "writing", "localization"]
+}

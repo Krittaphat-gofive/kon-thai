@@ -1,0 +1,12 @@
+{
+  "name": "kon-thai",
+  "description": "Claude Code plugin ที่ทำให้ Claude ตอบภาษาไทยแบบคนไทย",
+  "owner": { "name": "Krittaphat", "url": "https://github.com/Krittaphat-gofive" },
+  "plugins": [
+    {
+      "name": "kon-thai",
+      "source": "./plugins/kon-thai",
+      "description": "ตอบภาษาไทยแบบ senior dev คนไทยแทนภาษาแปล"
+    }
+  ]
+}

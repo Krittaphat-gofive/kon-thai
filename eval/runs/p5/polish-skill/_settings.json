@@ -1,0 +1,7 @@
+{
+ "outputStyle": "default",
+ "skillOverrides": {
+  "thai-native-voice": "off"
+ },
+ "disableAllHooks": true
+}

@@ -1,0 +1,11 @@
+{
+ "outputStyle": "default",
+ "enabledPlugins": {
+  "kon-thai@kon-thai": false
+ },
+ "skillOverrides": {
+  "thai-native-voice": "off",
+  "kon-thai:thai-native-voice": "off"
+ },
+ "disableAllHooks": true
+}
