@@ -326,7 +326,7 @@ def main():
 
     for sp in sub.choices.values():
         sp.add_argument("--prompts", default=str(PROMPTS), help="ไฟล์คำถาม (ค่าเริ่มต้น eval/prompts.md)")
-        sp.add_argument("--persona", choices=["krab", "kha"], default="krab", help="persona ที่ใช้ตรวจ: krab = ผม/ครับ, kha = ดิฉัน/ค่ะ")
+        sp.add_argument("--persona", choices=["krab", "kha"], default="krab", help="persona ที่ใช้ตรวจ: krab = ผม/ครับ, kha = หนู/ค่ะ")
     args = ap.parse_args()
     args.func(args)
 

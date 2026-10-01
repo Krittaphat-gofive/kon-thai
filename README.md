@@ -2,7 +2,7 @@
 
 Claude Code plugin ที่ทำให้ Claude ตอบภาษาไทยแบบ senior dev คนไทยคุยกับเพื่อนร่วมทีม แทนภาษาไทยแบบแปลจากอังกฤษ
 
-*A Claude Code plugin that makes Claude reply in natural, native-sounding Thai instead of translated Thai: two output styles (ผม/ครับ and ดิฉัน/ค่ะ), a polishing skill, and a reminder hook.*
+*A Claude Code plugin that makes Claude reply in natural, native-sounding Thai instead of translated Thai: two output styles (ผม/ครับ and หนู/ค่ะ), a polishing skill, and a reminder hook.*
 
 ## ติดตั้ง
 
@@ -22,7 +22,7 @@ Claude Code plugin ที่ทำให้ Claude ตอบภาษาไท�
 | style | persona |
 |---|---|
 | `kon-thai:thai-native` | แทนตัวเองว่าผม ลงท้ายครับ |
-| `kon-thai:thai-native-kha` | แทนตัวเองว่าดิฉัน ลงท้ายค่ะ |
+| `kon-thai:thai-native-kha` | แทนตัวเองว่าหนู ลงท้ายค่ะ ถ้าผู้ใช้คุยด้วย เค้า หรือ เรา ก็ใช้ตาม |
 
 เปิด session ใหม่ แล้ว style จะมีผลตั้งแต่ข้อความแรก ถ้าตั้งผ่านคำสั่ง `/output-style` แทน ค่าจะไปอยู่ใน `.claude/settings.local.json` ของโปรเจกต์นั้นโปรเจกต์เดียว
 
@@ -68,7 +68,7 @@ python plugins/kon-thai/skills/thai-native-voice/scripts/thai_lint.py --persona 
 linter รายงาน "จุดน่าสงสัย" ไม่ใช่ข้อผิด ทุกจุดต้องให้คนอ่านตัดสินอีกรอบ แต่ละจุดมีประเภทกำกับ
 - `แปล` ร่องรอยภาษาแปล เช่น em dash, ถูก + กริยา กับเรื่องปกติ, มันเป็น… คะแนนหลักนับเฉพาะประเภทนี้
 - `ทางการ` ภาษาราชการ เช่น อย่างไรก็ตาม, ดำเนินการ ในแชตควรเลี่ยง แต่ในจดหมายใช้ได้
-- `บุคคล` ผิด persona เช่น persona ผม/ครับ แต่ใช้ ค่ะ หรือ persona ดิฉัน/ค่ะ แต่เขียน นะค่ะ (ต้องเป็น นะคะ)
+- `บุคคล` ผิด persona เช่น persona ผม/ครับ แต่ใช้ ค่ะ หรือ persona หนู/ค่ะ แต่เขียน นะค่ะ (ต้องเป็น นะคะ)
 - `house` ตัวสะกด ไม้ยมก การเว้นวรรค เป็นแบบที่ชุดนี้เลือกใช้ ไม่ใช่ร่องรอยภาษาแปล เพราะคนไทยเองก็เขียนต่างกันบ่อย
 
 ## ทดสอบและวัดผล
@@ -111,7 +111,7 @@ python eval/calibrate.py --runs r5/control r5/style               # เทีย
 
 v1 แก้ภาษาแปลได้ แต่ทำให้ทุกคำตอบปิดท้ายด้วยการเสนอช่วยจนเป็นแม่แบบ v2 แก้เรื่องนี้ โดยยังได้คะแนนภาษาแปลเท่าเดิม ผลเต็มอยู่ใน `eval/runs/h3/`, `eval/runs/h4/` และ `eval/corpus/heldout-compare.md`
 
-style แบบดิฉัน/ค่ะ (held-out 6 ข้อ): คะแนนภาษาแปล 0.23 ไม่มี em dash ใช้ persona ถูกทุกจุด คือ "ค่ะ" ในประโยคบอกเล่า "คะ" ในคำถาม และ "นะคะ" ไม่มี "ครับ" หรือ "ผม" หลุดมาเลย ผลเต็มอยู่ใน `eval/runs/h5-kha/`
+style แบบหนู/ค่ะ (held-out 6 ข้อ กับชุดทดสอบ persona 3 ข้อ): คะแนนภาษาแปล 0 ไม่มี em dash ส่วนใหญ่ละสรรพนาม ตอนที่ต้องแทนตัวเองใช้ "หนู" เช่น "ข้อมูลที่หนูไม่มี" และไม่มี "ดิฉัน", "ผม" หรือ "ครับ" หลุดมาเลย รอบก่อนหน้า Claude ใส่ "คะ" ผิดในประโยคบอกเล่าที่มีคำถามซ้อน เช่น "เดี๋ยวบอกได้ว่าควรใช้ข้อไหนคะ" 3 จุด พอแก้กฎใน style แล้วเหลือ 0 ผลเต็มอยู่ใน `eval/runs/h7-kha/` กับ `eval/runs/x2-kha/`
 
 ### ชุดแรก 20 ข้อ (รันตอนยังไม่ได้ติดตั้ง และยังมี hook ของ superpowers ทำงานอยู่)
 
